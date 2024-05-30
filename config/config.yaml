@@ -1,0 +1,7 @@
+AddrConnection: "localhost:44044"
+TimeoutConnection: 50s
+RetriesCount: 3
+AppSetting:
+  Name: "Ship PO"
+  Width: 1920
+  Height:  1020

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package myservice;
+import "machine_department.proto";
+option go_package = "../gen;ssov1";
+
+service Radar {
+  rpc GetRadarInfo(userName) returns (stream Object);
+  rpc ChangeShipParameters(UpdateShipParameters) returns (Empty);
+}
+
+message Object {
+  string name = 1;
+  string type = 2;
+  float x = 3;
+  float y = 4;
+  float angel = 5;
+  float speed = 6;
+  bool inRangeShip = 7;
+}
+
+message UpdateShipParameters {
+  string typeParam = 1;
+  float value = 2;
+}

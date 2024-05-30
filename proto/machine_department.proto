@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package myservice;
+
+option go_package = "../gen;ssov1";
+
+service MachineDepartment {
+  rpc GetInfoMachineDep(userName) returns (stream InfoMachineDep);
+}
+
+message Empty {}
+
+message userName {
+  string userName = 1;
+}
+
+message InfoMachineDep {
+  Engine Engine1 = 1;
+  Engine Engine2 = 2;
+  CoolingSystem CoolingSystem1 = 3;
+  CoolingSystem CoolingSystem2 = 4;
+  Generator Generator1 = 5;
+  Generator Generator2 = 6;
+  FuelSystem FuelSystem1 = 7;
+  FuelSystem FuelSystem2 = 8;
+}
+
+message Engine {
+  int64 id = 1;
+  string status = 2;
+  int64 rpm = 3;
+  float temperature = 4;
+  float voltage = 5;
+}
+
+message CoolingSystem {
+  int64 id = 1;
+  string status = 2;
+  float coolant_temperature = 3;
+  float system_pressure = 4;
+}
+
+message Generator {
+  int64 id = 1;
+  string status = 2;
+  float power = 3;
+  string fuel = 4;
+  float voltage = 5;
+}
+
+message FuelSystem {
+  int64 id = 1;
+  string status = 2;
+  float fuel_level = 3;
+  float contaminants_level = 4;
+  string fuel_filter_status = 5;
+  float flow_rate = 6;
+  bool leak_detection = 7;
+  string fuel_pump_status = 8;
+}

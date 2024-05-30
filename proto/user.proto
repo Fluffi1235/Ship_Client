@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package myservice;
+import "machine_department.proto";
+option go_package = "../gen;ssov1";
+
+service User {
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc DeleteUser (UserDeleteRequest) returns (UserDeleteResponse) {}
+  rpc ChangeProfilePhoto(ChangeProfilePhotoRequest) returns (ChangeProfilePhotoResponse) {}
+  rpc GetUsersData(userName) returns (GetUsersDataResponse) {}
+  rpc ChangeEmail(Email) returns (GetUserResponse) {}
+  rpc ChangePassword(NewPassword) returns (Empty) {}
+}
+
+message NewPassword {
+  string userName = 1;
+  bytes Pas = 2;
+}
+
+message Email {
+  string userName = 1;
+  string Email = 2;
+}
+
+message GetUsersDataResponse {
+  repeated UserInfo users = 1;
+}
+
+message UserInfo {
+  string name = 1;
+  string surname = 2;
+  string department = 3;
+  string rank = 4;
+  string email = 5;
+  string photoUrl = 6;
+}
+
+message GetUserRequest {
+  string userName = 1;
+  string token = 2;
+}
+
+message GetUserResponse {
+  int64 id = 1;
+  string userName = 2;
+  bytes password = 3;
+  string name = 4;
+  string surname = 5;
+  string department = 6;
+  string rank = 7;
+  string email = 8;
+  string photoUrl = 9;
+}
+
+message UserDeleteRequest {
+  int64 user_id = 1;
+}
+
+message UserDeleteResponse {
+  bool status = 1;
+}
+
+message UpdateUserRequest {
+  string userName = 1;
+  string password = 2;
+  string role = 3;
+  string name = 4;
+  string surname = 5;
+}
+
+message UpdateUserResponse {
+  bool status = 1;
+}
+
+message ChangeProfilePhotoRequest {
+  string userName = 1;
+  string photo = 2;
+  string photoName = 3;
+}
+
+message ChangeProfilePhotoResponse {
+  string urlPhoto = 1;
+}
